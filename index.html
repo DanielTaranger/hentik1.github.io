@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calc</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+
+        <div id="scriptManager">
+            <div id="scriptTitle">Automation</div>
+            <div id="recordStartWrapper"><span id="recordStart">&#x23fa</span></div>
+            <div id="scriptStartWrapper"><span id="scriptStart">&#x23f5</span></div>
+            <div id="script1"></div>
+        </div>
+        
+        <div id="showHideScriptManager">
+            <
+        </div>
+
+
+        <div id="middle">
+            <div id="input2"></div>
+            <div id="input1"></div>
+
+            <div id="frame">
+                <div data-value="0" id="divide">/</div>
+                <div data-value="0" id="sqrt">sqx</div>
+                <div data-value="0" id="clearAll">C</div> 
+                <div data-value="1" id="back">⌫</div>
+                <div data-value="0" id="d7">7</div>
+                <div data-value="0" id="d8">8</div>
+                <div data-value="0" id="d9">9</div>
+                <div data-value="0" id="multi">*</div>
+                <div data-value="0" id="d4">4</div>
+                <div data-value="0" id="d5">5</div>
+                <div data-value="0" id="d6">6</div>
+                <div data-value="1" id="plus">+</div>
+                <div data-value="1" id="d1">1</div>
+                <div data-value="0" id="d2">2</div>
+                <div data-value="0" id="d3">3</div>
+                <div data-value="0" id="minus">-</div>
+                <div data-value="0" id="d0">0</div>
+                <div data-value="0" id="comma">,</div>
+                <div data-value="1" id="sum">=</div>
+            </div>
+            <div id="alertBox"></div>
+
+        </div>
+
+        <div id="showHideUpgrades">
+            >
+        </div>
+
+        <div id="right">
+            <div id="upgradesTitle">Upgrades</div>
+
+            <div id="scriptDelayUpgrade">
+                <div id="scriptDelayUpgradeTitle">Automation delay</div>
+                <div id="scriptDelayUpgradePrice"></div>
+                <div id="scriptDelayUpgradeShowDelay"></div>
+            </div>
+
+            <div id="maxDigitsUpgrade">
+                <div id="maxDigitsUpgradeTitle">Max digits</div>
+                <div id="maxDigitsUpgradePrice"></div>
+                <div id="maxDigitsUpgradeShowNext"></div>
+            </div>
+
+            <div id="maxInputUpgrade">
+                <div id="maxInputUpgradeTitle">Max input length</div>
+                <div id="maxInputUpgradePrice"></div>
+                <div id="maxInputUpgradeShowNext"></div>
+            </div>
+
+            <div id="newButtonUpgrade">
+                <div id="newButtonUpgradeTitle">Unlock a new calculator button</div>
+                <div id="newButtonUpgradePrice"></div>
+            </div>
+            
+        </div>
+
+        <button id="reset">reset</button>
+        
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js" defer></script>
+        <script src="calculator.js"  ></script>
+        <script src="script.js"  ></script>
+        <script src="upgrades.js" ></script>
+    </body>
+</html>
