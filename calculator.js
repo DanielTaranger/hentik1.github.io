@@ -34,45 +34,26 @@ var middle = document.getElementById("middle");
 var right = document.getElementById("right");
 var showHideUpgrades = document.getElementById("showHideUpgrades");
 var showHideScriptManager = document.getElementById("showHideScriptManager");
+var recordSvg = document.getElementById("recordSvg");
 
-
+const components = [d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, plus, minus, multi, divide, sqrt, comma, sum, clearAll, back];
+const operators = "+-*/";
+const numbers = "0123456789";
+var maxInputLength = localStorage.getItem("maxInputLength");
+var maxAmountNumbers = localStorage.getItem("maxAmountNumbers");
 
 function displayOnLoad() {
-    var total = localStorage.getItem("Total");
-    var script = localStorage.getItem("Script");
+    let total = localStorage.getItem("Total");
     
-    console.log(total);
     if (total != null) {
         input2.innerHTML = total;
     }
     else {
         input2.innerHTML = 0;
-        console.log("123");
         localStorage.setItem("Total",0);
     }
-
-    if (script != "") {
-        script1.innerHTML = script;
-    }
-    else {
-        script1.innerHTML = "";
-    }
-   
 }
 displayOnLoad();
-
-
-const components = [d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, plus, minus, multi, divide, sqrt, comma, sum, clearAll, back];
-const operators = "+-*/";
-const numbers = "0123456789";
-var maxInputLenC = 3;
-var maxAmountNumbersC = 1;  
-
-
-
-var maxInputLen = maxInputLenC;
-var maxAmountNumbers = maxAmountNumbersC;
-
 
 function hasOperator(e) {
     for (let i = 0; i < operators.length; i++) {
@@ -84,80 +65,57 @@ function hasOperator(e) {
     return false;
 }
 
-
-
 function backDel() {
-
-    
-    if(
-        operators.includes(input1.innerHTML.charAt(input1.innerHTML.length-1))
-        &&
-        input1.innerHTML != "") {
-            maxInputLen += 1;
-        }
-    
+    // if last char in input1 is a operator
+    if(operators.includes(input1.innerHTML.charAt(input1.innerHTML.length-1))&&
+    input1.innerHTML != "") {
+        maxInputLength += 1;
+    }
     
     else if (input1.innerHTML != "") {
-        maxInputLen += 1;
+        maxInputLength += 1;
         maxAmountNumbers += 1;
     }
 
     input1.innerHTML = input1.innerHTML.slice(0, -1);
-
 }
 
 function sumF() {
 
     // Evaluating string using js math library
-    total = math.evaluate(input1.innerHTML) + math.evaluate(localStorage.getItem("Total"));
-
+    total = math.evaluate(input1.innerHTML) + math.evaluate(localStorage.getItem("Total"))
 
     if (hasOperator(input1.innerHTML)) {
         input2.innerHTML = total;
         input1.innerHTML = "";
         localStorage.setItem("Total", total);
-        maxInputLen = maxInputLenC;
-        maxAmountNumbers = maxAmountNumbersC;
+
+        maxInputLength = localStorage.getItem("maxInputLength");
+        maxAmountNumbers = localStorage.getItem("maxAmountNumbers");
     }
-
 }
 
-
-
-back.onclick = function () {
-    backDel();
-}
-
-sum.onclick = function () {
-    sumF();
-}
-
-
+back.onclick = () => backDel();
+sum.onclick = () => sumF();
 
 frame.onclick = function (e) {
 
-    if (maxInputLen > 0) {
+    if (maxInputLength > 0) {
+        
         if (!isNaN(e.target.innerHTML) && maxAmountNumbers != 0) {
             input1.innerHTML += e.target.innerHTML;
             maxAmountNumbers -= 1;
-            maxInputLen -= 1;
-
+            maxInputLength -= 1;
         }
 
         if (hasOperator(e.target.innerHTML)) {
             console.log(e.target.innerHTML);
             input1.innerHTML += e.target.innerHTML;
-            maxInputLen -= 1;
+            maxInputLength -= 1;
         }
-
     }
-
-
-
 }
 
-
-// Style
 
 right.style.visibility = "hidden";
 scriptManager.style.visibility = "hidden";
@@ -189,9 +147,6 @@ showHideScriptManager.onclick = function() {
     }
 }
 
-
-
-
 function hideButtons() {
     for (var e of components) {
         e.style.pointerEvents = "None";
@@ -203,18 +158,17 @@ hideButtons();
 
 function visibleButtons() {
     for (var e of components) {
-        if (e.getAttribute("data-value") == "1") {
+        if (localStorage.getItem(e.id) == "1") { //e.getAttribute("data-value") == "1"
             e.style.pointerEvents = "Visible";
             e.style.backgroundColor = "Grey";
             e.style.color = "White";
             e.style.boxShadow = "0px 2px 4px black";
         }
-
     }
 }
 visibleButtons();
 
-
+// Hover effect only on visible buttons
 addEventListener("mouseover", function (e) {
     if (e.target.getAttribute("data-value") == "1") {
         e.target.style.backgroundColor = "rgb(70, 73, 73)";
@@ -229,12 +183,8 @@ addEventListener("mouseover", function (e) {
 
 })
 
+
 reset.onclick = function () {
-   
     localStorage.clear();
     window.location.reload();
-
 }
-
-
-
