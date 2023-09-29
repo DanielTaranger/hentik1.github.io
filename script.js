@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 var scriptSeq = "";
 
 var scriptDelay = 1000;

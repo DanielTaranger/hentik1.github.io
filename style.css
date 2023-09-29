@@ -1,4 +1,3 @@
-
 body {
     height: 100vmin;
     width: 100vmin;
@@ -137,6 +136,7 @@ body {
 
  #recordStart {
    text-align: center;
+   font-size: 80px;
  }
 
  #script1 {
@@ -211,9 +211,3 @@ body {
  #scriptDelayUpgrade:hover,#maxDigitsUpgrade:hover,#maxInputUpgrade:hover,#newButtonUpgrade:hover {
   background-color: black;
  }
-
-
-
- 
-
-
