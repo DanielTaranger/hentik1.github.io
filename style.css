@@ -4,14 +4,12 @@ body {
     min-width: 100%;
     font-family: sans-serif;
     overflow: hidden;
-    background-color: rgb(2, 3, 11);
+    background-color: rgb(12 27 39);
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
-
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
@@ -23,6 +21,7 @@ body {
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   position: relative;
 }
 
 
@@ -30,8 +29,8 @@ body {
     width: 250px;
     height: 2em;
     text-align: left;
-    border: 1px solid black;
-    background-color: black;
+    border: 1px solid rgb(90, 90, 90);
+    background-color: #161616;
     color: white;
     outline: none;
     pointer-events: none;
@@ -46,9 +45,10 @@ body {
     width: 250px;
     height: 25px;
     text-align: right;
-    border: 1px solid black;
-    border-bottom: 1px solid grey;
-    background-color: black;
+    border: 1px solid rgb(90, 90, 90);
+    border-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #272727;
     color: white;
     font-size: 2em;
     outline: none;
@@ -87,7 +87,18 @@ body {
     left: 3%;
     width: 50px;
     height: 50px;
+    background-color: #272727;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid gray;
  }
+
+ #reset:hover {
+  background-color: white;
+  color: #272727;
+  transition: all 300ms;
+}
 
  #settings {
     font-size: 26px;
@@ -98,15 +109,29 @@ body {
  }
 
  #scriptTitle {
-    font-size: 26px;
-    width: 120px;
-    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    padding: 5px;
  }
+
+ #upgradesTitle {
+  font-size: 24px;
+  text-align: center;
+  padding: 5px;
+}
 
  #recordStart {
    font-size: 50px;
    color: red;
+   cursor: pointer;
  }
+
+ #recordSvg:hover {
+  fill: white;
+  cursor: pointer;
+  transition: fill 200ms;
+}
+
  #recordStartWrapper,#scriptStartWrapper {
    width: 250px;
    text-align:center;
@@ -115,10 +140,12 @@ body {
  #scriptStart {
     color: white;
     width: 50px;
+    cursor: pointer;
     font-size: 50px;
  }
  #scriptStart:hover {
     color:red;
+    transition: color 200ms;
  }
 
  #scriptInfo {
@@ -141,26 +168,26 @@ body {
 
  #script1 {
    padding: 10px;
+   min-height: 35px;
    text-align: center;
    font-size: 30px;
    font-family: monospace;
+   margin: 4px;
  }
 
  #inputSlots {
     font-size: 2em;
  }
 
-
-
  #right {
    width: 250px;
    height: 350px;
    border-bottom-right-radius: 5%;
-   border-top-right-radius: 5%
-;   position: relative;
+   border-top-right-radius: 5%;
+   position: relative;
    top: 66px;
-   right: 17px;
-   background-color:  rgb(77, 77, 82);
+   right: 28px;
+   background-color:  rgb(47, 47, 49);
  }
 
  #scriptManager {
@@ -170,44 +197,65 @@ body {
    border-top-left-radius: 5%;
    position: relative;
    top: 66px;
-   left: 17px;
-   background-color:  rgb(77, 77, 82);
- }
- 
-
- #upgradesTitle {
-   font-size: 28px;
+   left: 28px;
+   background-color:  rgb(47, 47, 49);
  }
 
  #scriptDelayUpgrade,#maxDigitsUpgrade,#maxInputUpgrade,#newButtonUpgrade {
-   border: 1px solid white;
+   border: 1px solid rgb(124, 124, 124);
    padding: 5px;
+   margin: 5px;
    text-align: center;
+   border-radius: 5px;
+   color: gray;
  }
 
  #showHideScriptManager {
    position: relative;
-   left: 1px;
-   border-top-left-radius: 50%;
-   border-bottom-left-radius: 50%;
+   left: 2px;
+   padding: 7px;
+   cursor: pointer;
+   border-top-left-radius: 20%;
+   border-bottom-left-radius: 20%;
  }
  #showHideUpgrades {
    position: relative;
    right: 1px;
-   border-top-right-radius: 50%;
-   border-bottom-right-radius: 50%;
+   padding: 7px;
+   cursor: pointer;
+   border-top-right-radius: 20%;
+   border-bottom-right-radius: 20%;
  }
 
  #showHideUpgrades,#showHideScriptManager {
-   font-size: 28px;
-   background-color: grey;
+   font-size: 22px;
+   background-color: rgb(47, 47, 49);
  }
 
  #showHideUpgrades:hover,#showHideScriptManager:hover {
    background-color: rgb(70, 73, 73);
  }
 
+#alertBox  {
+  position: absolute;
+  top: -30px;
+}
 
- #scriptDelayUpgrade:hover,#maxDigitsUpgrade:hover,#maxInputUpgrade:hover,#newButtonUpgrade:hover {
-  background-color: black;
+.button, .clickable {
+  cursor: pointer !important;
+}
+
+.clickable {
+  color: white !important;
+}
+
+.clickable:hover {
+  background-color: white;
+  color: black !important;
+  transition: all 200ms;
  }
+
+.button[data-value="0"] {
+  background-color: rgb(51, 51, 51) !important;
+  color: rgb(58, 58, 58) !important;
+}

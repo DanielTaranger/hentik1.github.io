@@ -160,6 +160,7 @@ function visibleButtons() {
     for (var e of components) {
         if (localStorage.getItem(e.id) == "1") { //e.getAttribute("data-value") == "1"
             e.style.pointerEvents = "Visible";
+            e.setAttribute("data-value", "1");
             e.style.backgroundColor = "Grey";
             e.style.color = "White";
             e.style.boxShadow = "0px 2px 4px black";

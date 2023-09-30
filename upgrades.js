@@ -74,6 +74,43 @@ function upgradesOnLoad() {
 upgradesOnLoad();
 
 
+function updateUpgradeablePrices() {
+    if (Number(localStorage.getItem("Total")) >= Number(localStorage.getItem("scriptDelayPrice"))) {
+        scriptDelayUpgrade.style.backgroundColor = "#22bc00";
+        scriptDelayUpgrade.classList.add("clickable");
+
+    } else {
+        scriptDelayUpgrade.style.backgroundColor = "transparent";
+        scriptDelayUpgrade.classList.remove("clickable");
+
+    }
+
+    if (Number(localStorage.getItem("Total")) >= Number(localStorage.getItem("maxDigitsPrice"))) {
+        maxDigitsUpgrade.style.backgroundColor = "#22bc00";
+        maxDigitsUpgrade.classList.add("clickable");
+    } else {
+        maxDigitsUpgrade.style.backgroundColor = "transparent";
+        maxDigitsUpgrade.classList.remove("clickable");
+    }
+
+    if (Number(localStorage.getItem("Total")) >= Number(localStorage.getItem("maxInputLengthPrice"))) {
+        maxInputUpgrade.style.backgroundColor = "#22bc00";
+        maxInputUpgrade.classList.add("clickable");
+    } else {
+        maxInputUpgrade.style.backgroundColor = "transparent";
+        maxInputUpgrade.classList.remove("clickable");
+    }
+
+    if (Number(localStorage.getItem("Total")) >= Number(localStorage.getItem("unlockNewButtonPrice"))) {
+        newButtonUpgrade.style.backgroundColor = "#22bc00";
+        newButtonUpgrade.classList.add("clickable");
+    } else {
+        newButtonUpgrade.style.backgroundColor = "transparent";
+        newButtonUpgrade.classList.remove("clickable");
+
+    }
+} 
+setInterval(updateUpgradeablePrices, 300);
 
 function upgradeScriptDelay() {
     let upgradeValue = 0.8;
@@ -104,6 +141,8 @@ function upgradeScriptDelay() {
     }
 }
 scriptDelayUpgrade.onclick = () => upgradeScriptDelay();
+let maxDigitsPrice = localStorage.getItem("maxDigitsPrice");
+
 
 function upgradeMaxDigits() {
 
@@ -124,7 +163,6 @@ function upgradeMaxDigits() {
 
         maxDigitsUpgradePrice.innerHTML = "Cost:" + localStorage.getItem("maxDigitsPrice");  
         maxDigitsUpgradeShowNext.innerHTML = localStorage.getItem("maxAmountNumbers") + "->" + (Number(localStorage.getItem("maxAmountNumbers"))+1);
-
     }
 }
 maxDigitsUpgrade.onclick = () =>  upgradeMaxDigits();
